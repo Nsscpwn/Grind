@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GrindModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Levels">
+    <Key>
+      <PropertyRef Name="Level_ID" />
+    </Key>
+    <Property Name="Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level_NR" Type="int" Nullable="false" />
+    <Property Name="Level_Health" Type="int" Nullable="false" />
+    <Property Name="Level_Armour" Type="int" Nullable="false" />
+    <Property Name="Level_Damage" Type="int" Nullable="false" />
+    <Property Name="Level_Stenght" Type="int" Nullable="false" />
+    <Property Name="Level_Agility" Type="int" Nullable="false" />
+    <Property Name="Level_Dodge" Type="int" Nullable="false" />
+    <Property Name="Level_Critical_Chance" Type="int" Nullable="false" />
+    <Property Name="Level_Boss" Type="int" Nullable="false" />
+    <Property Name="Level_Gold_Min" Type="int" Nullable="false" />
+    <Property Name="Level_Gold_Max" Type="int" Nullable="false" />
+    <Property Name="Level_Stats_Point" Type="int" Nullable="false" />
+    <Property Name="Level_Skill" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stats">
+    <Key>
+      <PropertyRef Name="Stats_ID" />
+    </Key>
+    <Property Name="Stats_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Health" Type="int" Nullable="false" />
+    <Property Name="Armour" Type="int" Nullable="false" />
+    <Property Name="Strenght" Type="int" Nullable="false" />
+    <Property Name="Agility" Type="int" Nullable="false" />
+    <Property Name="Dodge" Type="int" Nullable="false" />
+    <Property Name="Critical_Chance" Type="int" Nullable="false" />
+    <Property Name="Stats_User" Type="int" Nullable="false" />
+    <Property Name="Damage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLvl">
+    <Key>
+      <PropertyRef Name="Level_ID" />
+    </Key>
+    <Property Name="Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level_User" Type="int" Nullable="false" />
+    <Property Name="Level_User_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Stats_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Stats" Type="Self.Stats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Stats">
+        <PropertyRef Name="Stats_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLvl_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserLvl" Type="Self.UserLvl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLvl">
+        <PropertyRef Name="Level_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GrindModelStoreContainer">
+    <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLvl" EntityType="Self.UserLvl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Stats_Users" Association="Self.FK_Stats_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Stats" EntitySet="Stats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLvl_Users" Association="Self.FK_UserLvl_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserLvl" EntitySet="UserLvl" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

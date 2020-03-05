@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GrindModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Stats" Relationship="GrindModel.FK_Stats_Users" FromRole="User" ToRole="Stat" />
+    <NavigationProperty Name="UserLvls" Relationship="GrindModel.FK_UserLvl_Users" FromRole="User" ToRole="UserLvl" />
+  </EntityType>
+  <EntityContainer Name="GrindEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Stats" EntityType="GrindModel.Stat" />
+    <AssociationSet Name="FK_Stats_Users" Association="GrindModel.FK_Stats_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Stat" EntitySet="Stats" />
+    </AssociationSet>
+    <EntitySet Name="Levels" EntityType="GrindModel.Level" />
+    <EntitySet Name="UserLvls" EntityType="GrindModel.UserLvl" />
+    <AssociationSet Name="FK_UserLvl_Users" Association="GrindModel.FK_UserLvl_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLvl" EntitySet="UserLvls" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Stat">
+    <Key>
+      <PropertyRef Name="Stats_ID" />
+    </Key>
+    <Property Name="Stats_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Health" Type="Int32" Nullable="false" />
+    <Property Name="Strenght" Type="Int32" Nullable="false" />
+    <Property Name="Agility" Type="Int32" Nullable="false" />
+    <Property Name="Dodge" Type="Int32" Nullable="false" />
+    <Property Name="Critical_Chance" Type="Int32" Nullable="false" />
+    <Property Name="Stats_User" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GrindModel.FK_Stats_Users" FromRole="Stat" ToRole="User" />
+    <Property Name="Armour" Type="Int32" Nullable="false" />
+    <Property Name="Damage" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Stats_Users">
+    <End Type="GrindModel.User" Role="User" Multiplicity="1" />
+    <End Type="GrindModel.Stat" Role="Stat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Stat">
+        <PropertyRef Name="Stats_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="Level_ID" />
+    </Key>
+    <Property Name="Level_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Level_NR" Type="Int32" Nullable="false" />
+    <Property Name="Level_Health" Type="Int32" Nullable="false" />
+    <Property Name="Level_Armour" Type="Int32" Nullable="false" />
+    <Property Name="Level_Damage" Type="Int32" Nullable="false" />
+    <Property Name="Level_Stenght" Type="Int32" Nullable="false" />
+    <Property Name="Level_Agility" Type="Int32" Nullable="false" />
+    <Property Name="Level_Dodge" Type="Int32" Nullable="false" />
+    <Property Name="Level_Critical_Chance" Type="Int32" Nullable="false" />
+    <Property Name="Level_Boss" Type="Int32" Nullable="false" />
+    <Property Name="Level_Gold_Min" Type="Int32" Nullable="false" />
+    <Property Name="Level_Gold_Max" Type="Int32" Nullable="false" />
+    <Property Name="Level_Stats_Point" Type="Int32" Nullable="false" />
+    <Property Name="Level_Skill" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLvl">
+    <Key>
+      <PropertyRef Name="Level_ID" />
+    </Key>
+    <Property Name="Level_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Level_User" Type="Int32" Nullable="false" />
+    <Property Name="Level_User_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GrindModel.FK_UserLvl_Users" FromRole="UserLvl" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UserLvl_Users">
+    <End Type="GrindModel.User" Role="User" Multiplicity="1" />
+    <End Type="GrindModel.UserLvl" Role="UserLvl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLvl">
+        <PropertyRef Name="Level_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

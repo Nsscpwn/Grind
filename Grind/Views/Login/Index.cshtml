@@ -1,0 +1,105 @@
+﻿@model Grind.Models.Main
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" id="div-register">
+        <div class="row">
+            <div class="col-md-12" id="login-register-title">
+                <h1>Register</h1>
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserModel.Username, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.UserModel.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserModel.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserModel.Password, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.UserModel.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserModel.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserModel.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.UserModel.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserModel.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12" id="login-register-btn">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12" id="login-register-btn">
+                <label class="label-success">@ViewBag.SuccesMessage</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12" id="login-register-btn">
+                <label class="label-danger">@ViewBag.DuplicateMessage</label>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <div class="form-horizontal" id="div-login">
+        <div class="row">
+            <div class="col-md-12" id="login-register-title">
+                <h1>Login</h1>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserModel.Username, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.UserModel.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserModel.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserModel.Password, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.UserModel.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserModel.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12"  id="login-register-btn">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="col-md-12" id="login-register-btn">
+            <label>
+                @Html.DisplayFor(model => model.UserModel.LoginError)
+            </label>
+        </div>
+
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,113 @@
+﻿#header {
+    font-weight: bold;
+    font-family: sans-serif;
+    color: coral;
+    text-decoration:none;
+    margin:auto;
+}
+
+#Logout {
+    font-weight: bold;
+    font-family: sans-serif;
+    color: coral;
+    text-decoration: none;
+    margin: auto;
+}
+
+#headerName {
+    font-weight: bold;
+    font-family: sans-serif;
+    color: coral;
+    font-size: 25px;
+    text-decoration: none;
+    border: solid;
+    border-color: white;
+    border-width: thin;
+}
+
+#header-row {
+    text-align: center;
+}
+
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .row.display-flex > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+
+#col-header:hover {
+    border: solid;
+    border-width: thin;
+    border-color: blue;
+}
+
+#container-stats {
+    max-width: 20%;
+    max-height:300px;
+    border: solid;
+    border-color: dodgerblue;
+    margin-left:0px;
+    margin-top:50px;
+}
+
+#statsText{
+    font-family:sans-serif;
+    font-weight:bold;
+    font-size:15px;
+
+}
+
+#container-header{
+    margin-bottom:50px;
+}
+
+#div-stats-lvl{
+    display:flex;
+}
+
+#lvlTitle {
+    text-align: center;
+
+}
+
+    #lvlTitle h2 {
+        font-size: 35px;
+        color: coral;
+        font-family: sans-serif;
+    }
+
+#lvlNr {
+    margin-top:50px;
+    text-align: center;
+
+}
+
+    #lvlNr h2 {
+        font-weight: bold;
+        font-size: 150px;
+        color: coral;
+        font-family: sans-serif;
+    }
+    
+#monsterInfo{
+    text-align:center
+}
+
+    #monsterInfo h2 {
+        font-size: 35px;
+        color: coral;
+        font-family: sans-serif;
+    }
+
+#lvlStats{
+    text-align:center;
+}
+#lvlStats p {
+    font-size: 20px;
+    color: coral;
+    font-family: sans-serif;
+}

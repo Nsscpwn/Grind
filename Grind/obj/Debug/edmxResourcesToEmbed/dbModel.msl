@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GrindModelStoreContainer" CdmEntityContainer="GrindEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="GrindModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stats">
+      <EntityTypeMapping TypeName="GrindModel.Stat">
+        <MappingFragment StoreEntitySet="Stats">
+          <ScalarProperty Name="Damage" ColumnName="Damage" />
+          <ScalarProperty Name="Armour" ColumnName="Armour" />
+          <ScalarProperty Name="Stats_User" ColumnName="Stats_User" />
+          <ScalarProperty Name="Critical_Chance" ColumnName="Critical_Chance" />
+          <ScalarProperty Name="Dodge" ColumnName="Dodge" />
+          <ScalarProperty Name="Agility" ColumnName="Agility" />
+          <ScalarProperty Name="Strenght" ColumnName="Strenght" />
+          <ScalarProperty Name="Health" ColumnName="Health" />
+          <ScalarProperty Name="Stats_ID" ColumnName="Stats_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Levels">
+      <EntityTypeMapping TypeName="GrindModel.Level">
+        <MappingFragment StoreEntitySet="Levels">
+          <ScalarProperty Name="Level_Skill" ColumnName="Level_Skill" />
+          <ScalarProperty Name="Level_Stats_Point" ColumnName="Level_Stats_Point" />
+          <ScalarProperty Name="Level_Gold_Max" ColumnName="Level_Gold_Max" />
+          <ScalarProperty Name="Level_Gold_Min" ColumnName="Level_Gold_Min" />
+          <ScalarProperty Name="Level_Boss" ColumnName="Level_Boss" />
+          <ScalarProperty Name="Level_Critical_Chance" ColumnName="Level_Critical_Chance" />
+          <ScalarProperty Name="Level_Dodge" ColumnName="Level_Dodge" />
+          <ScalarProperty Name="Level_Agility" ColumnName="Level_Agility" />
+          <ScalarProperty Name="Level_Stenght" ColumnName="Level_Stenght" />
+          <ScalarProperty Name="Level_Damage" ColumnName="Level_Damage" />
+          <ScalarProperty Name="Level_Armour" ColumnName="Level_Armour" />
+          <ScalarProperty Name="Level_Health" ColumnName="Level_Health" />
+          <ScalarProperty Name="Level_NR" ColumnName="Level_NR" />
+          <ScalarProperty Name="Level_ID" ColumnName="Level_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLvls">
+      <EntityTypeMapping TypeName="GrindModel.UserLvl">
+        <MappingFragment StoreEntitySet="UserLvl">
+          <ScalarProperty Name="Level_User_ID" ColumnName="Level_User_ID" />
+          <ScalarProperty Name="Level_User" ColumnName="Level_User" />
+          <ScalarProperty Name="Level_ID" ColumnName="Level_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container" id="container-header">
+        <div class="row display-flex" id="header-row">
+            <div class="col-md-2" id="col-header">
+                @Html.ActionLink("Rank", "Logout", "Login", new { id = "header" })
+            </div>
+            <div class="col-md-2" id="col-header">
+                @Html.ActionLink("Levels", "Logout", "Login", new { id = "header" })
+            </div>
+            <div class="col-md-4">
+                @Html.ActionLink("Grind Grind Grind", "Index", "MainPage", new { id = "headerName" })
+            </div>
+            <div class="col-md-2" id="col-header">
+                <p id="header">@Session["userName"].ToString()</p>
+            </div>
+            <div class="col-md-2" id="col-header">
+               @Html.ActionLink("Logout", "../Login/Logout","Login",new { id = "header" })
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year -Grind Grind Grind</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿@model Grind.Models.Main
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0" aria-valuemax="100" style="width:100%">
+        Health:@Session["statsHealth"]
+    </div>
+</div>
+
+<div class="container" id="div-stats-lvl">
+    <div class="container" id="container-stats">
+        <div class="col-md-12">
+            <div class="row" id="statsText">
+                <p>Damage:@Session["statsDamage"]</p>
+            </div>
+            <div class="row" id="statsText">
+                <p>Armour:@Session["statsArmour"]</p>
+            </div>
+            <div class="row" id="statsText">
+                <p>Strength:@Session["statsStrenght"]</p>
+            </div>
+            <div class="row" id="statsText">
+                <p>Agility:@Session["statsAgility"]</p>
+            </div>
+            <div class="row" id="statsText">
+                <p>Dodge:@Session["statsDodge"]</p>
+            </div>
+            <div class="row" id="statsText">
+                <p>Critical:@Session["statsCritical"]</p>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="container-lvl">
+        <div class="col-md-12">
+            <div class="row" id="lvlTitle">
+                <h2>Level</h2>
+            </div>
+            <div class="row" id="lvlNr">
+                <h2>@Session["levelUser"]</h2>
+            </div>
+            <div class="row" id="monsterInfo">
+                <h2>Monster Stats</h2>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Health:@Session["lvlHealth"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Damage:@Session["lvlDamage"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Armour:@Session["lvlArmour"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Strenght:@Session["lvlStrenght"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Agility:@Session["lvlAgility"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Critical:@Session["lvlCritical"]</p>
+            </div>
+            <div class="row" id="lvlStats">
+                <p>Dodge:@Session["lvlDodge"]</p>
+            </div>
+
+            <div class="row">
+                @using (@Html.BeginForm("../Fight/StartFight", "StartFight", new { id = "fightform" }))
+                {
+                    <input class="btn btn-primary" type="submit" value="Fight" id="fightBtn" />
+                }
+            </div>
+            <div id="fightdetails">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
