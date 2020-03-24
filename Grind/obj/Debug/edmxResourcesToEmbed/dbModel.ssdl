@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GrindModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Currency_ID" />
+    </Key>
+    <Property Name="Currency_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Currency_Gold" Type="int" Nullable="false" />
+    <Property Name="Currency_Points" Type="int" Nullable="false" />
+    <Property Name="Currency_User" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Levels">
     <Key>
       <PropertyRef Name="Level_ID" />
@@ -49,6 +58,18 @@
     <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Currency_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Currency" Type="Self.Currency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Currency">
+        <PropertyRef Name="Currency_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Stats_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Stats" Type="Self.Stats" Multiplicity="*" />
@@ -61,30 +82,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserLvl_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="UserLvl" Type="Self.UserLvl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="User_ID" />
-      </Principal>
-      <Dependent Role="UserLvl">
-        <PropertyRef Name="Level_User_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="GrindModelStoreContainer">
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLvl" EntityType="Self.UserLvl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Currency_Users" Association="Self.FK_Currency_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Currency" EntitySet="Currency" />
+    </AssociationSet>
     <AssociationSet Name="FK_Stats_Users" Association="Self.FK_Stats_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Stats" EntitySet="Stats" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserLvl_Users" Association="Self.FK_UserLvl_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UserLvl" EntitySet="UserLvl" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

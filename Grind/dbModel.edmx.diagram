@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="GrindModel.Level" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="GrindModel.UserLvl" Width="1.5" PointX="3" PointY="0.875" />
         <AssociationConnector Association="GrindModel.FK_UserLvl_Users" />
+        <EntityTypeShape EntityType="GrindModel.Currency" Width="1.5" PointX="3" PointY="8.875" />
+        <AssociationConnector Association="GrindModel.FK_Currency_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

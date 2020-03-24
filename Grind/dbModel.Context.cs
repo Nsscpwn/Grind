@@ -29,5 +29,6 @@ namespace Grind
         public virtual DbSet<Stat> Stats { get; set; }
         public virtual DbSet<Level> Levels { get; set; }
         public virtual DbSet<UserLvl> UserLvls { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
     }
 }

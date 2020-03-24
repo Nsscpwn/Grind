@@ -132,6 +132,10 @@
     <Compile Include="Controllers\FightController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
+    <Compile Include="Controllers\RankController.cs" />
+    <Compile Include="Currency.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,9 +157,11 @@
     <Compile Include="Level.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrencyModel.cs" />
     <Compile Include="Models\Fight.cs" />
     <Compile Include="Models\LevelStatsModel.cs" />
     <Compile Include="Models\Main.cs" />
+    <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\SqlCommands.cs" />
     <Compile Include="Models\StatsModel.cs" />
     <Compile Include="Models\UserLvlModel.cs" />
@@ -226,7 +232,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MainPage\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Fight\_FightDetails.cshtml" />
+    <Content Include="Views\Fight\FightDetails.cshtml" />
+    <Content Include="Views\Rank\Rank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

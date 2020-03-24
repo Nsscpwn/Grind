@@ -9,6 +9,7 @@
     <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Stats" Relationship="GrindModel.FK_Stats_Users" FromRole="User" ToRole="Stat" />
     <NavigationProperty Name="UserLvls" Relationship="GrindModel.FK_UserLvl_Users" FromRole="User" ToRole="UserLvl" />
+    <NavigationProperty Name="Currencies" Relationship="GrindModel.FK_Currency_Users" FromRole="User" ToRole="Currency" />
   </EntityType>
   <EntityContainer Name="GrindEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Users" EntityType="Self.User" />
@@ -22,6 +23,11 @@
     <AssociationSet Name="FK_UserLvl_Users" Association="GrindModel.FK_UserLvl_Users">
       <End Role="User" EntitySet="Users" />
       <End Role="UserLvl" EntitySet="UserLvls" />
+    </AssociationSet>
+    <EntitySet Name="Currencies" EntityType="GrindModel.Currency" />
+    <AssociationSet Name="FK_Currency_Users" Association="GrindModel.FK_Currency_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Currency" EntitySet="Currencies" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Stat">
@@ -88,6 +94,28 @@
       </Principal>
       <Dependent Role="UserLvl">
         <PropertyRef Name="Level_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Currency_ID" />
+    </Key>
+    <Property Name="Currency_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Currency_Gold" Type="Int32" Nullable="false" />
+    <Property Name="Currency_Points" Type="Int32" Nullable="false" />
+    <Property Name="Currency_User" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GrindModel.FK_Currency_Users" FromRole="Currency" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Currency_Users">
+    <End Type="GrindModel.User" Role="User" Multiplicity="1" />
+    <End Type="GrindModel.Currency" Role="Currency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Currency">
+        <PropertyRef Name="Currency_User" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

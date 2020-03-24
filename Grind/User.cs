@@ -19,6 +19,7 @@ namespace Grind
         {
             this.Stats = new HashSet<Stat>();
             this.UserLvls = new HashSet<UserLvl>();
+            this.Currencies = new HashSet<Currency>();
         }
     
         public int User_ID { get; set; }
@@ -29,5 +30,7 @@ namespace Grind
         public virtual ICollection<Stat> Stats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLvl> UserLvls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Currency> Currencies { get; set; }
     }
 }

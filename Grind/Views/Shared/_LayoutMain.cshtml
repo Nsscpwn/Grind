@@ -11,13 +11,13 @@
     <div class="container" id="container-header">
         <div class="row display-flex" id="header-row">
             <div class="col-md-2" id="col-header">
-                @Html.ActionLink("Rank", "Logout", "Login", new { id = "header" })
+                @Html.ActionLink("Rank", "../Rank/Rank", "Rank", new { id = "header" })
             </div>
             <div class="col-md-2" id="col-header">
                 @Html.ActionLink("Levels", "Logout", "Login", new { id = "header" })
             </div>
             <div class="col-md-4">
-                @Html.ActionLink("Grind Grind Grind", "Index", "MainPage", new { id = "headerName" })
+                @Html.ActionLink("Grind Grind Grind", "../MainPage/Index", "MainPage", new { id = "headerName" })
             </div>
             <div class="col-md-2" id="col-header">
                 <p id="header">@Session["userName"].ToString()</p>

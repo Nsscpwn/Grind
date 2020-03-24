@@ -42,7 +42,7 @@ namespace Grind.Models
                 main.StatsModel.Stats_User = Int32.Parse(userStatsUser);
                 var userDamage = rd["Damage"].ToString();
                 main.StatsModel.Damage = Int32.Parse(userDamage);
-                var userArmour  = rd["Armour"].ToString();
+                var userArmour = rd["Armour"].ToString();
                 main.StatsModel.Armour = Int32.Parse(userArmour);
                 HttpContext.Current.Session["statsHealth"] = main.StatsModel.Health;
                 HttpContext.Current.Session["statsAgility"] = main.StatsModel.Agility;
@@ -74,7 +74,7 @@ namespace Grind.Models
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
-                var lvl= rd["Level_User"].ToString();
+                var lvl = rd["Level_User"].ToString();
                 main.UserLvlModel.Level_User = Int32.Parse(lvl);
                 var lvlid = rd["Level_ID"].ToString();
                 main.UserLvlModel.Level_ID = Int32.Parse(lvlid);
@@ -105,7 +105,7 @@ namespace Grind.Models
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
-              
+
                 var levelHealth = rd["Level_Health"].ToString();
                 main.LvlStats.level_Health = Int32.Parse(levelHealth);
                 var levelArmour = rd["Level_Armour"].ToString();
@@ -145,6 +145,113 @@ namespace Grind.Models
             }
             con.Close();
             rd.Close();
+        }
+
+        public void getUserCurrency(int id)
+        {
+            Main main = new Main();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-4GS4D8J;Initial Catalog=Grind;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "select * from Currency inner join Users on Users.User_ID=Currency.Currency_User where @id=Currency.Currency_User",
+                Connection = con
+            };
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                var Gold = rd["Currency_Gold"].ToString();
+                main.CurrencyModel.Currency_Gold = Int32.Parse(Gold);
+                var Points = rd["Currency_Points"].ToString();
+                main.CurrencyModel.Currency_Points = Int32.Parse(Points);
+                var lvluser = rd["Currency_User"].ToString();
+                HttpContext.Current.Session["UserGold"] = main.CurrencyModel.Currency_Gold;
+                HttpContext.Current.Session["UserPoints"] = main.CurrencyModel.Currency_Points;
+            }
+            con.Close();
+            rd.Close();
+        }
+
+        public List<Rank> getRankNames()
+        {
+           
+            List<Rank> showrankNames = new List<Rank>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-4GS4D8J;Initial Catalog=Grind;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "select * from UserLvl inner join Users on Users.User_ID=UserLvl.Level_User_ID ORDER BY Level_User DESC ",
+                Connection = con
+            };
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Rank rnk = new Rank();
+                rnk.name = rd["Username"].ToString();
+                showrankNames.Add(rnk);
+            }
+            con.Close();
+            rd.Close();
+            return showrankNames;
+        }
+        public List<Rank> getRankLvl()
+        {
+
+            List<Rank> showrankLvl = new List<Rank>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-4GS4D8J;Initial Catalog=Grind;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "select * from UserLvl inner join Users on Users.User_ID=UserLvl.Level_User_ID ORDER BY Level_User DESC ",
+                Connection = con
+            };
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Rank rnk = new Rank();
+                var lvl = rd["Level_User"].ToString();
+                rnk.lvl = Int32.Parse(lvl);
+                showrankLvl.Add(rnk);
+            }
+            con.Close();
+            rd.Close();
+            return showrankLvl;
+        }
+
+        public List<Rank> totalplayers()
+        {
+
+            List<Rank> showNrPlayers = new List<Rank>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-4GS4D8J;Initial Catalog=Grind;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "select * from UserLvl inner join Users on Users.User_ID=UserLvl.Level_User_ID ORDER BY Level_User DESC ",
+                Connection = con
+            };
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Rank rnk = new Rank();
+                rnk.nrplayers++;
+                showNrPlayers.Add(rnk);
+            }
+            con.Close();
+            rd.Close();
+            return showNrPlayers;
         }
     }
 }

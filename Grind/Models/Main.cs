@@ -15,6 +15,8 @@ namespace Grind.Models
             this.UserLvlModel = new UserLvlModel();
             this.LvlStats = new LevelStatsModel();
             this.Fight = new Fight();
+            this.CurrencyModel = new CurrencyModel();
+            this.Rank = new Rank();
         }
         public UserModel UserModel { get; set; }
         public StatsModel StatsModel { get; set; }
@@ -22,5 +24,7 @@ namespace Grind.Models
         public UserLvlModel UserLvlModel { get; set; }
         public LevelStatsModel LvlStats { get; set; }
         public Fight Fight { get; set; }
+        public CurrencyModel CurrencyModel { get; set; }
+        public Rank Rank { get; set; }
     }
 }

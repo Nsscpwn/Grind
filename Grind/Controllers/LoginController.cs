@@ -44,8 +44,15 @@ namespace Grind.Controllers
                     Level_User=1,
                     Level_User_ID= userModel.User_ID
                 };
+                Currency curncy = new Currency()
+                {
+                    Currency_User = userModel.User_ID,
+                    Currency_Gold = 0,
+                    Currency_Points = 100
+                };
                 dbModel.Users.Add(userModel);
                 dbModel.Stats.Add(stats);
+                dbModel.Currencies.Add(curncy);
                 dbModel.UserLvls.Add(lvl);
                 dbModel.SaveChanges();
             }
@@ -73,6 +80,7 @@ namespace Grind.Controllers
                     main.SQL.GetStats(main.UserModel.User_ID);
                     main.SQL.getLVL(main.UserModel.User_ID);
                     main.SQL.getLVLStats(main.UserModel.User_ID);
+                    main.SQL.getUserCurrency(main.UserModel.User_ID);
                     Session["userID"] = main.UserModel.User_ID;
                     Session["userName"] = main.UserModel.Username;
                     return RedirectToAction("Index", "MainPage");
