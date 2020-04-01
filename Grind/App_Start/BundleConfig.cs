@@ -10,7 +10,8 @@ namespace Grind
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.4.1.js",
-                        "~/Scripts/jquery-3.4.1.min.js"));
+                        "~/Scripts/jquery-3.4.1.min.js",
+                        "~/Content/MainPage/FightDetails.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*",
@@ -28,8 +29,7 @@ namespace Grind
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/Login/Index.css",
-                      "~/Content/MainPage/MainPage.css",
-                      "~/Content/MainPage/FightDetails.js"));
+                      "~/Content/MainPage/MainPage.css"));
         }
     }
 }

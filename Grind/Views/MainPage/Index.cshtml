@@ -77,16 +77,15 @@
                 <p>Dodge:@Session["lvlDodge"]</p>
             </div>
 
-            <div class="row">
-                @using (@Html.BeginForm("../Fight/StartFight", "StartFight", new { id = "fightform" }))
-                {
-                    <input class="btn btn-primary" type="submit" value="Fight" id="fightBtn" />
-                }
+            <div class="row">                            
+                <input class="btn btn-primary" type="submit" value="Fight" id="fightBtn" onclick="find();" />
             </div>
+            <ul id="fightdet">
+               
+            </ul>
         </div>
     </div>
 </div>
-
 
 
 

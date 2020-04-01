@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grind.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace Grind.Controllers
         // GET: MainPage
         public ActionResult Index()
         {
-            return View();
+            Main main= new Main();
+            return View(main);
         }
     }
 }
