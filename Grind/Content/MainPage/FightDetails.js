@@ -1,4 +1,4 @@
-﻿var uri = 'api/fights';
+﻿var uri = 'lupta/fights';
 
 $(document).ready(function () {
     // Send an AJAX request
