@@ -1,5 +1,4 @@
-﻿var uri = 'api/lupta';
-
+﻿var uri = 'api/mesaj';
 $(document).ready(function () {
     // Send an AJAX request
     $.getJSON(uri)
@@ -7,11 +6,8 @@ $(document).ready(function () {
             // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
                 // Add a list item for the product.
-                $('<li>'{ text: formatItem(item) }).appendTo($('#fightdet'));
+                $({ text: item }).appendTo($('#fightdet'));
             });
         });
 });
 
-function formatItem(item) {
-    return item.textMessage;
-}

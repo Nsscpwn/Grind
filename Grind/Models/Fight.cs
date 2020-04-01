@@ -7,6 +7,7 @@ namespace Grind.Models
 {
     public class Fight
     {
+        public int Id { get; set; }
         public string textMessage { get; set; }
         public int PlayerDamage { get; set; }
         public int LevelDamage { get; set; }
