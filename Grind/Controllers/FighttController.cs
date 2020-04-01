@@ -12,7 +12,7 @@ using System.Web.Routing;
 namespace Grind.Controllers
 {
  
-   public class FighttController : ApiController
+   public class LuptaController : ApiController
     {
         Fight[] fights = new Fight[]
           {
