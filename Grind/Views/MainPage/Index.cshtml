@@ -77,12 +77,25 @@
                 <p>Dodge:@Session["lvlDodge"]</p>
             </div>
 
-            <div class="row">                            
-                <input class="btn btn-primary" type="submit" value="Fight" id="fightBtn" onclick="find();" />
+            <div class="row">
+                <input class="btn btn-primary" type="submit" value="Fight" id="fightBtn" onclick="fight();"/>
             </div>
-            <ul id="fightdet">
-               
-            </ul>
+            <div id="fightdet">
+
+            </div>
         </div>
     </div>
 </div>
+<script>
+    var userID = '@Session["userID"]';
+function fight() {
+  $.ajax({
+    type: 'GET',
+    url: 'api/test/' + userID
+  }).done(function(result) {
+      alert(result)
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+    console.log(textStatus + ': ' + errorThrown);
+  });
+}
+</script>

@@ -17,6 +17,7 @@ namespace Grind.Models
             this.Fight = new Fight();
             this.CurrencyModel = new CurrencyModel();
             this.Rank = new Rank();
+            this.FightDet = new FightDet();
         }
         public UserModel UserModel { get; set; }
         public StatsModel StatsModel { get; set; }
@@ -26,5 +27,6 @@ namespace Grind.Models
         public Fight Fight { get; set; }
         public CurrencyModel CurrencyModel { get; set; }
         public Rank Rank { get; set; }
+        public FightDet FightDet { get; set; }
     }
 }

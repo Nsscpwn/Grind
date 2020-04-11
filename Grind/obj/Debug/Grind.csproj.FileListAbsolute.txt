@@ -85,4 +85,15 @@ C:\Users\raulz\source\repos\Grind\Grind\bin\System.Web.Http.WebHost.dll
 C:\Users\raulz\source\repos\Grind\Grind\bin\System.Net.Http.Formatting.xml
 C:\Users\raulz\source\repos\Grind\Grind\bin\System.Web.Http.xml
 C:\Users\raulz\source\repos\Grind\Grind\bin\System.Web.Http.WebHost.xml
+C:\Users\raulz\source\repos\Grind\Grind\bin\DocumentFormat.OpenXml.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\System.IO.Packaging.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\DocumentFormat.OpenXml.xml
+C:\Users\raulz\source\repos\Grind\Grind\bin\System.IO.Packaging.xml
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.Security.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\Owin.dll
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.xml
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.Security.xml
+C:\Users\raulz\source\repos\Grind\Grind\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\raulz\source\repos\Grind\Grind\obj\Debug\Grind.csprojAssemblyReference.cache
